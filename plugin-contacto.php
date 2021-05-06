@@ -14,6 +14,7 @@
     $sql="CREATE TABLE IF NOT EXISTS $tabla (id_contacto int(10) NOT NULL AUTO_INCREMENT,
                                             Nombre varchar(40) NOT NULL,
                                             Apellido varchar(40) NOT NULL,
+                                            Telefono varchar(40) NOT NULL,
                                             Correo varchar(255) NOT NULL,
                                             Direccion varchar(255) NOT NULL,
                                             created_at datetime NOT NULL,
@@ -29,7 +30,7 @@
  function formulario_contacto(){
     global $wpdb;
     if(!empty($_POST)
-        AND $_POST['nombre'] != '' 
+        AND $_POST['nombre'] != ''
         AND is_email($_POST['email'])
         AND $_POST['apellido'] != ''
         AND $_POST['telefono'] != ''
@@ -45,6 +46,7 @@
             $wpdb->insert($tabla, array(
                 'Nombre' => $nombre,
                 'Apellido' => $apellido,
+                'Telefono' => $telefono,
                 'Correo' => $email,
                 'Direccion' => $direccion,
                 'created_at' => $created_at
